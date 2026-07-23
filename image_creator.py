@@ -24,10 +24,8 @@ img = client.images.generate(
 )
 
 image_bytes = base64.b64decode(img.data[0].b64_json)
-with open("foundry_generated.png", "wb") as f:
+with open("./assets/foundry_generated.png", "wb") as f:
     f.write(image_bytes)
 
 print("Saved: foundry_generated.png")
 
-
-####################
