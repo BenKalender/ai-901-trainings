@@ -1,8 +1,11 @@
-import requests
-import time
 import os
+import time
+
 from dotenv import load_dotenv
+import requests
+
 from env_utils import doublecheck_env
+
 
 # Load environment variables from .env
 load_dotenv()
