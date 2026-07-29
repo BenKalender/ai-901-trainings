@@ -46,20 +46,30 @@ def main():
                 continue
 
             # Get a response
-            completion = openai_client.chat.completions.create(
-                model=model_deployment,
-                messages=[
-                    {
-                        "role": "system",
-                        "content": "You are a helpful AI assistant that answers questions and provides information."
-                    },
-                    {
-                        "role": "user",
-                        "content": input_text
-                    }
-                ]
+            # ResponsesAPI
+            response = openai_client.responses.create(
+                        model=model_deployment,
+                        instructions="You are a helpful AI assistant that answers questions and provides information.",
+                        input=input_text
             )
-            print(completion.choices[0].message.content)
+            print(response.output_text)
+
+            # ChatCompletionsAPI
+            # completion = openai_client.chat.completions.create(
+            #     model=model_deployment,
+            #     messages=[
+            #         {
+            #             "role": "system",
+            #             "content": "You are a helpful AI assistant that answers questions and provides information."
+            #         },
+            #         {
+            #             "role": "user",
+            #             "content": input_text
+            #         }
+            #     ]
+            # )
+            # print(completion.choices[0].message.content)
+
             # Note that the ChatCompletions API uses a JSON collection of messages to encapsulate the conversation. 
             # Often, these consist of a system prompt that provides instructions to the model, 
             # and a user prompt that includes the user’s input.
